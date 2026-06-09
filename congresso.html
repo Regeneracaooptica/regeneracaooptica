@@ -187,6 +187,164 @@ footer li a:hover{color:var(--orange);}
 .fi{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
 .fi.on{opacity:1;transform:none;}
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVO MOBILE
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* NAV */
+  .nav-inner { padding: 0 1.2rem; height: 64px; }
+  nav ul { gap: 0; }
+  .nav-link { display: none; }
+  .nav-cta { display: block; padding: .45rem 1rem !important; font-size: .78rem !important; }
+
+  /* HERO SPLIT (index) */
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 5rem 1.5rem 2.5rem; order: 1; }
+  .hero-right { height: 260px; order: 2; }
+  .hero-h1 { font-size: 2.2rem; }
+  .hero-lead { font-size: .92rem; max-width: 100%; }
+  .hero-purpose-box { margin: 1rem 0 1.8rem; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions a { width: 100%; text-align: center; justify-content: center; }
+
+  /* STAT BAR */
+  .stat-bar { padding: .9rem 1.5rem; gap: 1.2rem; flex-wrap: wrap; }
+  .stat-n { font-size: 1.2rem; }
+  .stat-l { font-size: .6rem; }
+  .stat-div { display: none; }
+
+  /* SECTIONS */
+  section { padding: 3.5rem 1.5rem; }
+  .sw { padding: 0 1.5rem; }
+
+  /* GRIDS 2 colunas -> 1 */
+  .prop-grid,
+  .eco-intro,
+  .cp-inner,
+  .pq-layout,
+  .temas-grid,
+  .traj-layout,
+  .vip-layout,
+  .aulas-layout,
+  .com-layout,
+  .pod-layout,
+  .ce-layout,
+  .pf-content,
+  .exp-layout,
+  .bento-grid,
+  .hist-layout,
+  .prop-layout { grid-template-columns: 1fr !important; gap: 2rem; }
+
+  /* GRIDS 3-4 colunas -> 1 ou 2 */
+  .eco-cards { grid-template-columns: 1fr; gap: 1rem; }
+  .pq-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .temas-full-grid { grid-template-columns: 1fr 1fr; }
+  .bento-features { grid-template-columns: 1fr; }
+  .traj-stats { grid-template-columns: 1fr 1fr; }
+  .prop-pillars { grid-template-columns: 1fr 1fr; }
+  .pf-values { grid-template-columns: 1fr 1fr; }
+  .ingressos-grid { grid-template-columns: 1fr; }
+
+  /* HEADINGS */
+  .st { font-size: 1.7rem; }
+  .sh2 { font-size: 1.7rem; }
+  .ch-h1 { font-size: 2.4rem; }
+  .cp-title { font-size: 1.8rem; }
+  .hero-h1 { font-size: 2rem; }
+
+  /* CONGRESSO HERO */
+  .cong-hero { min-height: auto; }
+  .ch-inner { padding: 5rem 1.5rem 3rem; }
+  .ch-chips { gap: .5rem; }
+  .ch-chip { font-size: .72rem; padding: .3rem .7rem; }
+  .ch-actions { flex-direction: column; }
+  .ch-actions a { text-align: center; justify-content: center; }
+  .ch-stats { gap: 1.5rem; flex-wrap: wrap; padding-top: 2rem; margin-top: 2rem; }
+  .ch-stat-n { font-size: 1.8rem; }
+
+  /* CONGRESSO PREVIEW (index) */
+  .cp-inner { padding: 0 1.5rem; }
+  .cp-badges { gap: .5rem; }
+  .cp-badge { font-size: .72rem; }
+  .cp-actions { flex-direction: column; }
+  .cp-actions a { text-align: center; justify-content: center; }
+
+  /* VIP BANNER */
+  .vip-inner { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1.5rem; }
+  .vip-banner { padding: 2.5rem 0; }
+
+  /* CTA FINAL */
+  .cta-final { padding: 4rem 0; }
+  .cta-final-inner { padding: 0 1.5rem; }
+  .cta-btns { flex-direction: column; }
+  .cta-btns a { text-align: center; justify-content: center; }
+  .cta-eco-inner { padding: 0 1.5rem; }
+
+  /* ECO HERO */
+  .eco-hero { padding: 6rem 0 3rem; }
+  .eco-hero-inner { padding: 0 1.5rem; }
+  .eco-hero h1 { font-size: 2.2rem; }
+  .eco-nav-pills { gap: .5rem; }
+  .eco-pill-nav { font-size: .75rem; padding: .4rem .9rem; }
+
+  /* COMUNIDADE */
+  .com-inner { padding: 0 1.5rem; }
+  .bento-inner { padding: 0 1.5rem; }
+
+  /* GALERIA */
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 160px 160px;
+  }
+  .g-photo.tall { grid-row: span 1; }
+  .g-wide { height: 180px; margin-top: .7rem; }
+
+  /* HISTORIA */
+  .hist-layout { gap: 2.5rem; }
+
+  /* PROPOSTA */
+  .prop-text-block p { font-size: .92rem; }
+
+  /* TEMAS */
+  .temas-full-grid { grid-template-columns: 1fr; }
+  .temas-intro { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem; }
+
+  /* RODAPÉ */
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; padding: 0 1.5rem; }
+  .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; padding: 1.2rem 1.5rem 0; }
+
+  /* BOTÕES */
+  .btn-orange, .btn-blue, .btn-ghost, .btn-ghost-w,
+  .btn-ghost-eco, .btn-wapp, .btn-yt, .btn-white { width: 100%; justify-content: center; text-align: center; }
+
+  /* INGRESSOS */
+  .ingresso-card { padding: 2rem 1.5rem; }
+
+  /* EXPERIÊNCIA */
+  .exp-stage { padding: 1.2rem; }
+
+  /* PARA QUEM */
+  .pq-cards { gap: 1rem; }
+  .pq-promise { padding: 2rem 1.5rem; }
+
+}
+
+@media (max-width: 480px) {
+  .hero-h1 { font-size: 1.75rem; }
+  .ch-h1 { font-size: 1.9rem; }
+  .st { font-size: 1.5rem; }
+  .temas-full-grid { grid-template-columns: 1fr; }
+  .traj-stats { grid-template-columns: 1fr; }
+  .prop-pillars { grid-template-columns: 1fr; }
+  .pf-values { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .g-photo img { height: 200px; }
+  .g-photo.tall img { height: 200px; }
+  .nav-logo img { height: 38px; }
+}
+
 </style>
 </head>
 <body>
