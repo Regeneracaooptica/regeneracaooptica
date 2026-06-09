@@ -276,6 +276,70 @@ footer li a:hover{color:var(--orange);}
   .nav-logo img { height: 38px; }
 }
  
+ 
+/* MENU HAMBURGUER MOBILE */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: .5rem;
+  background: none;
+  border: none;
+  z-index: 400;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--blue);
+  border-radius: 2px;
+  transition: all .3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+ 
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0; right: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray3);
+  padding: 1rem 1.5rem 1.5rem;
+  flex-direction: column;
+  gap: .25rem;
+  z-index: 299;
+  box-shadow: 0 8px 24px rgba(32,67,149,0.08);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 500;
+  padding: .75rem 1rem;
+  border-radius: 8px;
+  transition: background .2s, color .2s;
+}
+.mobile-menu a:hover { background: var(--blue-lt); color: var(--blue); }
+.mobile-menu a.active { color: var(--blue); font-weight: 600; }
+.mobile-menu .mob-cta {
+  background: var(--orange);
+  color: var(--white) !important;
+  font-weight: 700 !important;
+  text-align: center;
+  margin-top: .5rem;
+  border-radius: 8px;
+}
+.mobile-menu .mob-cta:hover { background: var(--orange-dk) !important; }
+ 
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+}
+ 
 </style>
 </head>
 <body>
@@ -286,8 +350,17 @@ footer li a:hover{color:var(--orange);}
     <li><a href="congresso.html" class="nav-link">Congresso</a></li>
     <li><a href="ecossistema.html" class="nav-link active">Ecossistema</a></li>
     <li><a href="https://www.sympla.com.br/evento/2-congresso-brasileiro-de-optica-regeneracao-optica-para-quem-enxerga-alem/3225934?referrer=www.google.com" target="_blank" class="nav-link nav-cta">Garanta a sua vaga</a></li>
-  </ul>
-</div></nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Início</a>
+        <a href="congresso.html">Congresso</a>
+        <a href="ecossistema.html" class="active">Ecossistema</a>
+        <a href="https://www.sympla.com.br/evento/2-congresso-brasileiro-de-optica-regeneracao-optica-para-quem-enxerga-alem/3225934?referrer=www.google.com" target="_blank" class="mob-cta">Garanta a sua vaga</a>
+      </div>
+    </div>
+</nav>
  
 <section class="eco-hero">
   <div style="position:absolute;inset:0;pointer-events:none;"><div class="eh-c eh-c1"></div><div class="eh-c eh-c2"></div></div>
@@ -463,4 +536,28 @@ footer li a:hover{color:var(--orange);}
 const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('on');obs.unobserve(el.target);}});},{threshold:0.08});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 </script>
+ 
+<script>
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  // Fechar ao clicar num link
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+  // Fechar ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    }
+  });
+</script>
+ 
 </body></html>
