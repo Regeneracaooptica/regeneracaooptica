@@ -426,15 +426,14 @@ footer li a:hover{color:var(--orange);}
     <li><a href="ecossistema.html" class="nav-link">Ecossistema</a></li>
     <li><a href="#contato" class="nav-link">Contato</a></li>
     <li><a href="https://www.sympla.com.br/evento/2-congresso-brasileiro-de-optica-regeneracao-optica-para-quem-enxerga-alem/3225934?referrer=www.google.com" target="_blank" class="nav-link nav-cta">Garanta a sua vaga</a></li>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="active">Início</a>
-        <a href="congresso.html">Congresso</a>
-        <a href="ecossistema.html">Ecossistema</a>
-        <a href="https://www.sympla.com.br/evento/2-congresso-brasileiro-de-optica-regeneracao-optica-para-quem-enxerga-alem/3225934?referrer=www.google.com" target="_blank" class="mob-cta">Garanta a sua vaga</a>
-      </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button><div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="active">Início</a>
+  <a href="congresso.html" class="">Congresso</a>
+  <a href="ecossistema.html" class="">Ecossistema</a>
+  <a href="https://www.sympla.com.br/evento/2-congresso-brasileiro-de-optica-regeneracao-optica-para-quem-enxerga-alem/3225934?referrer=www.google.com" target="_blank" class="mob-cta">Garanta a sua vaga</a>
+</div>
+  
+      
     </div>
 </nav>
 
@@ -686,12 +685,7 @@ document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 </script>
 
 <script>
-  const btn = document.getElementById('hamburger');
-  const menu = document.getElementById('mobileMenu');
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('open');
-    menu.classList.toggle('open');
-  });
+  
   // Fechar ao clicar num link
   menu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
@@ -708,4 +702,31 @@ document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
   });
 </script>
 
+
+
+
+<script id="hamburguerJS">
+(function(){
+  var btn=document.getElementById('hamburger');
+  var menu=document.getElementById('mobileMenu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!btn.contains(e.target)&&!menu.contains(e.target)){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    }
+  });
+})();
+</script>
 </body></html>
