@@ -470,80 +470,6 @@
     <p style="color:var(--dim);margin-top:6px;font-size:.93rem">Após a inscrição você recebe um e-mail de boas-vindas com todos os detalhes da aula.</p>
   </div>
   <style>
-    /* Brevo form overrides */
-    .sib-form { background-color: transparent !important; padding: 0 !important; }
-    #sib-form-container { background: transparent !important; }
-    #sib-container {
-      background-color: rgba(255,255,255,0.03) !important;
-      border: 1px solid rgba(201,151,58,0.22) !important;
-      border-radius: 20px !important;
-      max-width: 100% !important;
-      padding: 36px !important;
-    }
-    /* Hide title and subtitle — already shown above */
-    #sib-form > div:nth-child(1),
-    #sib-form > div:nth-child(2) { display: none !important; }
-    /* Labels */
-    #sib-form .entry__label {
-      font-weight: 600 !important;
-      font-family: 'Inter', sans-serif !important;
-      font-size: 0.78rem !important;
-      letter-spacing: .5px !important;
-      text-transform: uppercase !important;
-      color: rgba(255,255,255,0.55) !important;
-      margin-bottom: 6px !important;
-    }
-    /* Inputs */
-    #sib-form .input {
-      background: rgba(255,255,255,0.05) !important;
-      border: 1px solid rgba(255,255,255,0.12) !important;
-      border-radius: 10px !important;
-      color: #fff !important;
-      font-family: 'Inter', sans-serif !important;
-      font-size: 0.94rem !important;
-      padding: 13px 16px !important;
-      height: auto !important;
-      min-height: unset !important;
-    }
-    #sib-form .input:focus {
-      border-color: #C9973A !important;
-      background: rgba(201,151,58,0.06) !important;
-      outline: none !important;
-    }
-    #sib-form .input::placeholder { color: rgba(255,255,255,0.28) !important; }
-    /* Remove white background from entry fields */
-    #sib-form .form__entry, #sib-form .entry__field { background: transparent !important; }
-    /* Padding between fields */
-    #sib-form > div { padding: 6px 0 !important; }
-    /* Button */
-    #sib-form .sib-form-block__button {
-      background: linear-gradient(135deg, #C9973A 0%, #E8B95A 100%) !important;
-      color: #06111F !important;
-      font-weight: 700 !important;
-      font-size: 1rem !important;
-      padding: 17px !important;
-      border-radius: 50px !important;
-      width: 100% !important;
-      text-align: center !important;
-      font-family: 'Inter', sans-serif !important;
-      box-shadow: 0 8px 28px rgba(201,151,58,0.32) !important;
-      border: none !important;
-      cursor: pointer !important;
-      margin-top: 6px !important;
-    }
-    #sib-form .sib-form-block__button:hover { opacity: 0.9 !important; }
-    /* Hide helper texts */
-    #sib-form .entry__specification { display: none !important; }
-    .sib-sms-tooltip { display: none !important; }
-    /* Error messages */
-    #sib-form .entry__error { font-size: 12px !important; padding: 4px 8px !important; }
-    .form-note-brevo {
-      text-align: center;
-      font-size: .75rem;
-      color: rgba(255,255,255,.3);
-      margin-top: 10px;
-    }
-    /* Success message */
     #success-message-auladisney {
       display: none;
       text-align: center;
@@ -557,9 +483,17 @@
       margin-bottom: 10px;
     }
     #success-message-auladisney p { color: rgba(255,255,255,0.65); line-height: 1.7; }
-    @media(max-width:600px){
-      #sib-container { padding: 24px 16px !important; }
-      .brevo-grid { grid-template-columns: 1fr !important; }
+    .brevo-iframe-wrap {
+      border: 1px solid rgba(201,151,58,0.22);
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+    }
+    .brevo-iframe-wrap iframe {
+      width: 100%;
+      min-height: 520px;
+      border: none;
+      display: block;
     }
   </style>
 
@@ -573,116 +507,9 @@
     </a>
   </div>
 
-  <div id="brevo-form-container">
-    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-    <div class="sib-form" style="text-align:center; background-color:transparent;">
-      <div id="sib-form-container" class="sib-form-container">
-        <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center;">
-          <form id="sib-form" method="POST" action="https://2c963706.sibforms.com/v2/serve/MUIFALAC-TPP-Q3KGHmpgZNa4ygqGWybQ71JWQISKcWTQ0fHxuaM3dS_7QU4gt_seOXkmWvdo9W4RH5zD8ceuh52s0WJjdX6Dhw-YjeRqRt-l976CZeSCWIYumGYwvW_loSNBW0CgsIBqjfzVtdrFPjimhQwlpB-6R01cp5jpcvo2yV7ZajvOVoJz4bRj6ZCIID_B0xFCVXF7GL95g==" onsubmit="handleBrevoSubmit(event)">
-            <div style="padding:8px 0;">
-              <div class="sib-form-block" style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;text-align:left;color:#fff;background-color:transparent;">
-                <p>Reserve sua vaga agora</p>
-              </div>
-            </div>
-            <div style="padding:8px 0;">
-              <div class="sib-form-block" style="font-family:'Inter',sans-serif;font-size:0.95rem;text-align:left;color:rgba(255,255,255,0.7);background-color:transparent;">
-                <p>Após a inscrição você recebe um e-mail de boas-vindas com todos os detalhes da aula.</p>
-              </div>
-            </div>
-            <div style="padding:8px 0;">
-              <div class="sib-input sib-form-block">
-                <div class="form__entry entry_block">
-                  <div class="form__label-row">
-                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="NOME">Nome completo</label>
-                    <div class="entry__field">
-                      <input class="input" maxlength="200" type="text" id="NOME" name="NOME" autocomplete="off" placeholder="Seu nome completo" data-required="true" required />
-                    </div>
-                  </div>
-                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
-                </div>
-              </div>
-            </div>
-            <div class="brevo-grid" style="padding:6px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-              <div class="sib-input sib-form-block">
-                <div class="form__entry entry_block">
-                  <div class="form__label-row">
-                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="SMS">WhatsApp</label>
-                    <div class="entry__field">
-                      <input type="tel" class="input" id="SMS" name="SMS" autocomplete="off" placeholder="(00) 00000-0000" data-required="true" required />
-                    </div>
-                  </div>
-                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
-                </div>
-              </div>
-              <div class="sib-input sib-form-block">
-                <div class="form__entry entry_block">
-                  <div class="form__label-row">
-                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="EMAIL">E-mail</label>
-                    <div class="entry__field">
-                      <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="seu@email.com" data-required="true" required />
-                    </div>
-                  </div>
-                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
-                </div>
-              </div>
-            </div>
-            <div style="padding:8px 0;">
-              <div class="sib-input sib-form-block">
-                <div class="form__entry entry_block">
-                  <div class="form__label-row">
-                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="NOME_OTICA">Nome da óptica</label>
-                    <div class="entry__field">
-                      <input class="input" maxlength="200" type="text" id="NOME_OTICA" name="NOME_OTICA" autocomplete="off" placeholder="Nome da sua óptica" data-required="true" required />
-                    </div>
-                  </div>
-                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
-                </div>
-              </div>
-            </div>
-            <div style="padding:8px 0;">
-              <div class="sib-input sib-form-block">
-                <div class="form__entry entry_block">
-                  <div class="form__label-row">
-                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="CIDADE">Cidade</label>
-                    <div class="entry__field">
-                      <input class="input" maxlength="200" type="text" id="CIDADE" name="CIDADE" autocomplete="off" placeholder="Sua cidade / Estado" data-required="true" required />
-                    </div>
-                  </div>
-                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
-                </div>
-              </div>
-            </div>
-            <div style="padding:8px 0;">
-              <div class="sib-form-block" style="text-align:left">
-                <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
-                  ✦ Garantir minha vaga na aula
-                </button>
-              </div>
-            </div>
-            <p class="form-note-brevo">🔒 Seus dados estão protegidos. Não compartilhamos com terceiros.</p>
-            <input type="text" name="email_address_check" value="" class="input--hidden">
-            <input type="hidden" name="locale" value="pt">
-            <input type="hidden" name="html_type" value="simple">
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-  function handleBrevoSubmit(e) {
-    // Let Brevo handle the submit, but also show our success message
-    setTimeout(function() {
-      var container = document.getElementById('brevo-form-container');
-      var success = document.getElementById('success-message-auladisney');
-      if(container && success) {
-        container.style.display = 'none';
-        success.style.display = 'block';
-      }
-    }, 1500);
-  }
-  </script>
-</div>
+  <div id="brevo-iframe-container" class="brevo-iframe-wrap">
+    <iframe src="https://2c963706.sibforms.com/v2/serve/MUIFALAC-TPP-Q3KGHmpgZNa4ygqGWybQ71JWQISKcWTQ0fHxuaM3dS_7QU4gt_seOXkmWvdo9W4RH5zD8ceuh52s0WJjdX6Dhw-YjeRqRt-l976CZeSCWIYumGYwvW_loSNBW0CgsIBqjfzVtdrFPjimhQwlpB-6R01cp5jpcvo2yV7ZajvOVoJz4bRj6ZCIID_B0xFCVXF7GL95g==" frameborder="0" scrolling="auto" allowfullscreen></iframe>
+  </div></div>
 </div>
 </div>
 
