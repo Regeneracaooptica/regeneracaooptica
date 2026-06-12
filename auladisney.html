@@ -470,32 +470,52 @@
     <p style="color:var(--dim);margin-top:6px;font-size:.93rem">Após a inscrição você recebe um e-mail de boas-vindas com todos os detalhes da aula.</p>
   </div>
   <style>
-    /* Brevo form overrides to match page style */
+    /* Brevo form overrides */
+    .sib-form { background-color: transparent !important; padding: 0 !important; }
+    #sib-form-container { background: transparent !important; }
     #sib-container {
       background-color: rgba(255,255,255,0.03) !important;
       border: 1px solid rgba(201,151,58,0.22) !important;
       border-radius: 20px !important;
       max-width: 100% !important;
+      padding: 36px !important;
     }
-    #sib-form .sib-form-block p,
-    #sib-form .entry__label,
-    #sib-form label {
-      color: rgba(255,255,255,0.8) !important;
+    /* Hide title and subtitle — already shown above */
+    #sib-form > div:nth-child(1),
+    #sib-form > div:nth-child(2) { display: none !important; }
+    /* Labels */
+    #sib-form .entry__label {
+      font-weight: 600 !important;
       font-family: 'Inter', sans-serif !important;
+      font-size: 0.78rem !important;
+      letter-spacing: .5px !important;
+      text-transform: uppercase !important;
+      color: rgba(255,255,255,0.55) !important;
+      margin-bottom: 6px !important;
     }
+    /* Inputs */
     #sib-form .input {
       background: rgba(255,255,255,0.05) !important;
       border: 1px solid rgba(255,255,255,0.12) !important;
       border-radius: 10px !important;
       color: #fff !important;
       font-family: 'Inter', sans-serif !important;
+      font-size: 0.94rem !important;
       padding: 13px 16px !important;
+      height: auto !important;
+      min-height: unset !important;
     }
     #sib-form .input:focus {
       border-color: #C9973A !important;
       background: rgba(201,151,58,0.06) !important;
+      outline: none !important;
     }
     #sib-form .input::placeholder { color: rgba(255,255,255,0.28) !important; }
+    /* Remove white background from entry fields */
+    #sib-form .form__entry, #sib-form .entry__field { background: transparent !important; }
+    /* Padding between fields */
+    #sib-form > div { padding: 6px 0 !important; }
+    /* Button */
     #sib-form .sib-form-block__button {
       background: linear-gradient(135deg, #C9973A 0%, #E8B95A 100%) !important;
       color: #06111F !important;
@@ -507,28 +527,23 @@
       text-align: center !important;
       font-family: 'Inter', sans-serif !important;
       box-shadow: 0 8px 28px rgba(201,151,58,0.32) !important;
-      transition: transform .2s !important;
+      border: none !important;
+      cursor: pointer !important;
+      margin-top: 6px !important;
     }
-    #sib-form .sib-form-block__button:hover { transform: translateY(-3px) !important; }
-    .sib-form { background-color: transparent !important; }
+    #sib-form .sib-form-block__button:hover { opacity: 0.9 !important; }
+    /* Hide helper texts */
     #sib-form .entry__specification { display: none !important; }
-    .sib-form-block p { color: rgba(255,255,255,0.7) !important; }
-    #sib-form select.input { color: #fff !important; }
-    #sib-form select.input option { background: #1a2f4a; color: #fff; }
     .sib-sms-tooltip { display: none !important; }
-    #sib-form .sib-form-block:first-child p {
-      font-family: 'Playfair Display', serif !important;
-      font-size: 2rem !important;
-      font-weight: 700 !important;
-      color: #fff !important;
-    }
+    /* Error messages */
+    #sib-form .entry__error { font-size: 12px !important; padding: 4px 8px !important; }
     .form-note-brevo {
       text-align: center;
       font-size: .75rem;
       color: rgba(255,255,255,.3);
-      margin-top: 12px;
+      margin-top: 10px;
     }
-    /* After submit success */
+    /* Success message */
     #success-message-auladisney {
       display: none;
       text-align: center;
@@ -542,6 +557,10 @@
       margin-bottom: 10px;
     }
     #success-message-auladisney p { color: rgba(255,255,255,0.65); line-height: 1.7; }
+    @media(max-width:600px){
+      #sib-container { padding: 24px 16px !important; }
+      .brevo-grid { grid-template-columns: 1fr !important; }
+    }
   </style>
 
   <div id="success-message-auladisney">
@@ -583,7 +602,7 @@
                 </div>
               </div>
             </div>
-            <div style="padding:8px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="brevo-grid" style="padding:6px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
               <div class="sib-input sib-form-block">
                 <div class="form__entry entry_block">
                   <div class="form__label-row">
