@@ -469,28 +469,200 @@
     <h2 class="stitle">Reserve sua vaga agora</h2>
     <p style="color:var(--dim);margin-top:6px;font-size:.93rem">Após a inscrição você recebe um e-mail de boas-vindas com todos os detalhes da aula.</p>
   </div>
-  <div class="form-box">
-    <div id="fc">
-      <div class="field"><label>Nome completo</label><input type="text" id="nome" placeholder="Seu nome completo"></div>
-      <div class="frow">
-        <div class="field"><label>WhatsApp</label><input type="tel" id="wpp" placeholder="(00) 00000-0000"></div>
-        <div class="field"><label>E-mail</label><input type="email" id="mail" placeholder="seu@email.com"></div>
+  <style>
+    /* Brevo form overrides to match page style */
+    #sib-container {
+      background-color: rgba(255,255,255,0.03) !important;
+      border: 1px solid rgba(201,151,58,0.22) !important;
+      border-radius: 20px !important;
+      max-width: 100% !important;
+    }
+    #sib-form .sib-form-block p,
+    #sib-form .entry__label,
+    #sib-form label {
+      color: rgba(255,255,255,0.8) !important;
+      font-family: 'Inter', sans-serif !important;
+    }
+    #sib-form .input {
+      background: rgba(255,255,255,0.05) !important;
+      border: 1px solid rgba(255,255,255,0.12) !important;
+      border-radius: 10px !important;
+      color: #fff !important;
+      font-family: 'Inter', sans-serif !important;
+      padding: 13px 16px !important;
+    }
+    #sib-form .input:focus {
+      border-color: #C9973A !important;
+      background: rgba(201,151,58,0.06) !important;
+    }
+    #sib-form .input::placeholder { color: rgba(255,255,255,0.28) !important; }
+    #sib-form .sib-form-block__button {
+      background: linear-gradient(135deg, #C9973A 0%, #E8B95A 100%) !important;
+      color: #06111F !important;
+      font-weight: 700 !important;
+      font-size: 1rem !important;
+      padding: 17px !important;
+      border-radius: 50px !important;
+      width: 100% !important;
+      text-align: center !important;
+      font-family: 'Inter', sans-serif !important;
+      box-shadow: 0 8px 28px rgba(201,151,58,0.32) !important;
+      transition: transform .2s !important;
+    }
+    #sib-form .sib-form-block__button:hover { transform: translateY(-3px) !important; }
+    .sib-form { background-color: transparent !important; }
+    #sib-form .entry__specification { display: none !important; }
+    .sib-form-block p { color: rgba(255,255,255,0.7) !important; }
+    #sib-form select.input { color: #fff !important; }
+    #sib-form select.input option { background: #1a2f4a; color: #fff; }
+    .sib-sms-tooltip { display: none !important; }
+    #sib-form .sib-form-block:first-child p {
+      font-family: 'Playfair Display', serif !important;
+      font-size: 2rem !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+    }
+    .form-note-brevo {
+      text-align: center;
+      font-size: .75rem;
+      color: rgba(255,255,255,.3);
+      margin-top: 12px;
+    }
+    /* After submit success */
+    #success-message-auladisney {
+      display: none;
+      text-align: center;
+      padding: 28px 16px;
+    }
+    #success-message-auladisney .ck { font-size: 2.8rem; margin-bottom: 12px; }
+    #success-message-auladisney h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    #success-message-auladisney p { color: rgba(255,255,255,0.65); line-height: 1.7; }
+  </style>
+
+  <div id="success-message-auladisney">
+    <div class="ck">✨</div>
+    <h3>Inscrição confirmada!</h3>
+    <p>Verifique seu e-mail — enviamos as boas-vindas com todos os detalhes da aula.<br><br>Fique de olho na sua caixa de entrada até o dia 14 de julho!</p>
+    <a href="https://chat.whatsapp.com/DpAf8Gb7Nsc9DCSd5OTj19" target="_blank" class="btn-wpp" style="display:inline-flex;margin-top:20px;justify-content:center">
+      <svg class="wpp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Entrar na comunidade WhatsApp
+    </a>
+  </div>
+
+  <div id="brevo-form-container">
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+    <div class="sib-form" style="text-align:center; background-color:transparent;">
+      <div id="sib-form-container" class="sib-form-container">
+        <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center;">
+          <form id="sib-form" method="POST" action="https://2c963706.sibforms.com/v2/serve/MUIFALAC-TPP-Q3KGHmpgZNa4ygqGWybQ71JWQISKcWTQ0fHxuaM3dS_7QU4gt_seOXkmWvdo9W4RH5zD8ceuh52s0WJjdX6Dhw-YjeRqRt-l976CZeSCWIYumGYwvW_loSNBW0CgsIBqjfzVtdrFPjimhQwlpB-6R01cp5jpcvo2yV7ZajvOVoJz4bRj6ZCIID_B0xFCVXF7GL95g==" onsubmit="handleBrevoSubmit(event)">
+            <div style="padding:8px 0;">
+              <div class="sib-form-block" style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;text-align:left;color:#fff;background-color:transparent;">
+                <p>Reserve sua vaga agora</p>
+              </div>
+            </div>
+            <div style="padding:8px 0;">
+              <div class="sib-form-block" style="font-family:'Inter',sans-serif;font-size:0.95rem;text-align:left;color:rgba(255,255,255,0.7);background-color:transparent;">
+                <p>Após a inscrição você recebe um e-mail de boas-vindas com todos os detalhes da aula.</p>
+              </div>
+            </div>
+            <div style="padding:8px 0;">
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="NOME">Nome completo</label>
+                    <div class="entry__field">
+                      <input class="input" maxlength="200" type="text" id="NOME" name="NOME" autocomplete="off" placeholder="Seu nome completo" data-required="true" required />
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
+                </div>
+              </div>
+            </div>
+            <div style="padding:8px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="SMS">WhatsApp</label>
+                    <div class="entry__field">
+                      <input type="tel" class="input" id="SMS" name="SMS" autocomplete="off" placeholder="(00) 00000-0000" data-required="true" required />
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
+                </div>
+              </div>
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="EMAIL">E-mail</label>
+                    <div class="entry__field">
+                      <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="seu@email.com" data-required="true" required />
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
+                </div>
+              </div>
+            </div>
+            <div style="padding:8px 0;">
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="NOME_OTICA">Nome da óptica</label>
+                    <div class="entry__field">
+                      <input class="input" maxlength="200" type="text" id="NOME_OTICA" name="NOME_OTICA" autocomplete="off" placeholder="Nome da sua óptica" data-required="true" required />
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
+                </div>
+              </div>
+            </div>
+            <div style="padding:8px 0;">
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" style="font-weight:700;text-align:left;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);" for="CIDADE">Cidade</label>
+                    <div class="entry__field">
+                      <input class="input" maxlength="200" type="text" id="CIDADE" name="CIDADE" autocomplete="off" placeholder="Sua cidade / Estado" data-required="true" required />
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:14px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:3px;"></label>
+                </div>
+              </div>
+            </div>
+            <div style="padding:8px 0;">
+              <div class="sib-form-block" style="text-align:left">
+                <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                  ✦ Garantir minha vaga na aula
+                </button>
+              </div>
+            </div>
+            <p class="form-note-brevo">🔒 Seus dados estão protegidos. Não compartilhamos com terceiros.</p>
+            <input type="text" name="email_address_check" value="" class="input--hidden">
+            <input type="hidden" name="locale" value="pt">
+            <input type="hidden" name="html_type" value="simple">
+          </form>
+        </div>
       </div>
-      <div class="field"><label>Nome da óptica</label><input type="text" id="otica" placeholder="Nome da sua óptica"></div>
-      <div class="field"><label>Cidade</label><input type="text" id="cidade" placeholder="Sua cidade / Estado"></div>
-      <button class="btn-submit" onclick="sub(event)">✦ Garantir minha vaga na aula</button>
-      <p class="form-note">🔒 Seus dados estão protegidos. Não compartilhamos com terceiros.</p>
-    </div>
-    <div class="success" id="ok">
-      <div class="ck">✨</div>
-      <h3>Inscrição confirmada!</h3>
-      <p>Você está inscrito! Verifique seu e-mail — enviamos as boas-vindas com todos os detalhes da aula.<br><br>Fique de olho na sua caixa de entrada até o dia 14 de julho!</p>
-      <a href="https://chat.whatsapp.com/DpAf8Gb7Nsc9DCSd5OTj19" target="_blank" class="btn-wpp" style="display:inline-flex;margin-top:20px;justify-content:center">
-        <svg class="wpp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Entrar na comunidade WhatsApp
-      </a>
     </div>
   </div>
+
+  <script>
+  function handleBrevoSubmit(e) {
+    // Let Brevo handle the submit, but also show our success message
+    setTimeout(function() {
+      var container = document.getElementById('brevo-form-container');
+      var success = document.getElementById('success-message-auladisney');
+      if(container && success) {
+        container.style.display = 'none';
+        success.style.display = 'block';
+      }
+    }, 1500);
+  }
+  </script>
 </div>
 </div>
 </div>
