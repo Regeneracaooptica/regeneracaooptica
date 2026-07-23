@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-book Gratuito | Vendas e Prospecção para Óticas</title>
+  <meta name="description" content="Guia prático para vender com valor e gerar recomendações. Baixe gratuitamente." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul: #204395;
+      --azul-escuro: #172f6e;
+      --laranja: #ef7a1a;
+      --laranja-hover: #d46814;
+      --fundo: #f7f6f3;
+      --branco: #ffffff;
+      --texto: #3a3a4a;
+      --texto-suave: #6a6a7a;
+      --borda: #e2e0da;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--branco);
+      border-bottom: 1px solid var(--borda);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    header img {
+      height: 60px;
+      width: auto;
+      display: block;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--branco);
+      padding: 60px 24px 72px;
+    }
+    .hero-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: #eef1f9;
+      color: var(--azul);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+    .hero-text h1 {
+      font-size: clamp(26px, 3.8vw, 44px);
+      font-weight: 800;
+      color: var(--azul);
+      line-height: 1.13;
+      margin-bottom: 10px;
+    }
+    .hero-text h1 em {
+      font-style: normal;
+      color: var(--laranja);
+    }
+    .hero-text .subtitulo {
+      font-size: 16px;
+      color: var(--texto-suave);
+      margin-bottom: 32px;
+      max-width: 460px;
+      line-height: 1.65;
+    }
+
+    /* CAPA */
+    .hero-capa {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-capa img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 14px;
+      box-shadow: 0 28px 72px rgba(32,67,149,.2), 0 6px 20px rgba(0,0,0,.1);
+      transform: rotate(1.5deg);
+      transition: transform .35s ease, box-shadow .35s ease;
+      display: block;
+    }
+    .hero-capa img:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 0 32px 80px rgba(32,67,149,.25), 0 8px 24px rgba(0,0,0,.12);
+    }
+
+    /* FORMULÁRIO */
+    .form-wrap {
+      background: var(--fundo);
+      border: 1.5px solid var(--borda);
+      border-radius: 18px;
+      padding: 28px 24px;
+      max-width: 440px;
+    }
+    .form-titulo {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--azul);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-wrap input {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1.5px solid var(--borda);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--branco);
+      color: #1a1a2e;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-wrap input:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 0 3px rgba(32,67,149,.1);
+    }
+    .form-wrap input::placeholder { color: #b0b0be; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--laranja);
+      color: var(--branco);
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      letter-spacing: .01em;
+    }
+    .btn-submit:hover {
+      background: var(--laranja-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(239,122,26,.3);
+    }
+    .btn-submit:active { transform: translateY(0); box-shadow: none; }
+    .btn-submit:disabled { background: #ccc; cursor: default; transform: none; box-shadow: none; }
+
+    .form-lgpd {
+      font-size: 11px;
+      color: #aaa;
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* SUCESSO */
+    .success-wrap {
+      display: none;
+      background: var(--fundo);
+      border: 1.5px solid #b8d9a0;
+      border-radius: 18px;
+      padding: 32px 24px;
+      max-width: 440px;
+      text-align: center;
+    }
+    .success-wrap.visivel { display: block; }
+    .success-icone {
+      width: 60px; height: 60px;
+      background: #e6f5da;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 16px;
+    }
+    .success-wrap h3 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--azul);
+      margin-bottom: 8px;
+    }
+    .success-wrap p {
+      font-size: 14px;
+      color: var(--texto-suave);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--azul);
+      color: var(--branco);
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: background .2s, transform .15s;
+    }
+    .btn-download:hover { background: var(--azul-escuro); transform: translateY(-1px); }
+    .success-nota {
+      font-size: 12px;
+      color: #999;
+      margin-top: 14px;
+    }
+
+    /* BENEFÍCIOS */
+    .beneficios {
+      padding: 72px 24px;
+      background: var(--fundo);
+    }
+    .secao-topo {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .secao-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--laranja);
+      margin-bottom: 12px;
+    }
+    .secao-titulo {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 800;
+      color: var(--azul);
+      line-height: 1.2;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--branco);
+      border-radius: 14px;
+      padding: 26px 22px;
+      border: 1px solid var(--borda);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 30px rgba(32,67,149,.1);
+      transform: translateY(-2px);
+    }
+    .card-icone {
+      width: 46px; height: 46px;
+      background: #eef1f9;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+    .card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 13px;
+      color: var(--texto-suave);
+      line-height: 1.6;
+    }
+
+    /* DESTAQUE */
+    .destaque {
+      background: var(--azul);
+      padding: 60px 24px;
+    }
+    .destaque-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .destaque h2 {
+      font-size: clamp(20px, 2.8vw, 30px);
+      font-weight: 800;
+      color: var(--branco);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .destaque p {
+      color: rgba(255,255,255,.78);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .destaque-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .badge-item {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--branco);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* CTA FINAL */
+    .cta-final {
+      background: var(--fundo);
+      padding: 80px 24px;
+      text-align: center;
+      border-top: 1px solid var(--borda);
+    }
+    .cta-final h2 {
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 800;
+      color: var(--azul);
+      margin-bottom: 12px;
+    }
+    .cta-final p {
+      color: var(--texto-suave);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+    .btn-cta-final {
+      display: inline-block;
+      background: var(--laranja);
+      color: var(--branco);
+      text-decoration: none;
+      padding: 16px 38px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-cta-final:hover {
+      background: var(--laranja-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(239,122,26,.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a2e;
+      padding: 26px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,.38);
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,.55); text-decoration: none; }
+    footer a:hover { color: rgba(255,255,255,.85); }
+
+    /* SPINNER */
+    .spinner {
+      display: inline-block;
+      width: 15px; height: 15px;
+      border: 2px solid rgba(255,255,255,.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      vertical-align: middle;
+      margin-right: 7px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* RESPONSIVO */
+    @media (max-width: 820px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 44px;
+        text-align: center;
+      }
+      .hero-text .subtitulo { max-width: 100%; }
+      .hero-capa { order: -1; }
+      .hero-capa img { max-width: 200px; transform: none; }
+      .form-wrap, .success-wrap { max-width: 100%; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .full { grid-column: auto; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 40px 16px 52px; }
+      .beneficios { padding: 52px 16px; }
+      .destaque { padding: 48px 16px; }
+      .cta-final { padding: 60px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <img src="/public/logo.png" alt="Regeneração Óptica" />
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-tag">E-book gratuito</span>
+      <h1>Vendas e Prospecção<br><em>para Óticas</em></h1>
+      <p class="subtitulo">Guia prático para vender com valor e gerar recomendações consistentes na sua ótica.</p>
+
+      <!-- FORMULÁRIO -->
+      <div class="form-wrap" id="form-wrap">
+        <p class="form-titulo">Preencha para receber seu e-book gratuito</p>
+        <form id="lead-form" novalidate>
+          <div class="form-grid">
+            <div class="full">
+              <input type="text" id="nome" placeholder="Nome completo" required autocomplete="name" />
+            </div>
+            <div class="full">
+              <input type="email" id="email" placeholder="E-mail" required autocomplete="email" />
+            </div>
+            <input type="tel" id="telefone" placeholder="Telefone / WhatsApp" autocomplete="tel" />
+            <input type="text" id="cidade" placeholder="Cidade" />
+            <div class="full">
+              <input type="text" id="optica" placeholder="Nome da ótica" />
+            </div>
+          </div>
+          <button type="submit" class="btn-submit" id="btn-submit">
+            Quero meu e-book gratuito
+          </button>
+        </form>
+        <p class="form-lgpd">Seus dados estão seguros. Nada de spam.</p>
+      </div>
+
+      <!-- SUCESSO -->
+      <div class="success-wrap" id="success-wrap">
+        <div class="success-icone">✅</div>
+        <h3>E-book liberado!</h3>
+        <p>Clique abaixo para baixar agora. Também enviamos o link para o seu e-mail para você acessar quando quiser.</p>
+        <a href="https://ebook-indicacoes.vercel.app/public/ebook/vendas-prospeccao-oticas.pdf" class="btn-download" id="btn-download" target="_blank" rel="noopener">
+          Baixar e-book PDF
+        </a>
+        <p class="success-nota">Verifique também sua caixa de entrada (e a pasta de spam, por precaução).</p>
+      </div>
+    </div>
+
+    <div class="hero-capa">
+      <img src="/public/capa-ebook.jpeg" alt="Capa do e-book Vendas e Prospecção para Óticas" />
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="beneficios">
+  <div class="secao-topo">
+    <span class="secao-label">Conteúdo do e-book</span>
+    <h2 class="secao-titulo">O que você vai aprender</h2>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icone">🎯</div>
+      <h3>Nova mentalidade de vendas</h3>
+      <p>Como sair da dependência de preço e construir uma ótica percebida como referência de valor e cuidado.</p>
+    </div>
+    <div class="card">
+      <div class="card-icone">💬</div>
+      <h3>Anamnese comercial</h3>
+      <p>Perguntas direcionadas que ativam necessidades, geram confiança e aumentam a taxa de conversão.</p>
+    </div>
+    <div class="card">
+      <div class="card-icone">🔄</div>
+      <h3>Os 4 momentos da recomendação</h3>
+      <p>Preparação, entrega memorável, pedido estratégico e pós-venda: um método completo para gerar indicações.</p>
+    </div>
+    <div class="card">
+      <div class="card-icone">📊</div>
+      <h3>CAC e indicadores comerciais</h3>
+      <p>Como calcular o custo de aquisição e usar dados para tomar decisões mais inteligentes na sua ótica.</p>
+    </div>
+    <div class="card">
+      <div class="card-icone">🌟</div>
+      <h3>Operação 45</h3>
+      <p>Um plano prático para gerar 45 contatos qualificados por recomendação sem depender de tráfego pago.</p>
+    </div>
+    <div class="card">
+      <div class="card-icone">🗓️</div>
+      <h3>Plano de 30 dias</h3>
+      <p>Checklist de implementação para aplicar os conceitos com sua equipe imediatamente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESTAQUE -->
+<section class="destaque">
+  <div class="destaque-inner">
+    <h2>Para quem é este e-book</h2>
+    <p>Material desenvolvido para proprietários, gestores e vendedores do setor óptico que querem crescer com estratégia, sem depender exclusivamente de promoções e tráfego pago.</p>
+    <div class="destaque-badges">
+      <span class="badge-item">Proprietários de ótica</span>
+      <span class="badge-item">Gestores comerciais</span>
+      <span class="badge-item">Vendedores</span>
+      <span class="badge-item">Equipes de atendimento</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Pronto para vender com estratégia?</h2>
+  <p>Baixe agora, gratuitamente, e comece a transformar sua ótica.</p>
+  <button class="btn-cta-final" onclick="window.scrollTo({top:0,behavior:'smooth'});document.getElementById('nome').focus()">
+    Quero meu e-book gratuito
+  </button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <a href="https://www.regeneracaooptica.com.br">regeneracaooptica.com.br</a>
+  </p>
+  <p>© 2026 Regeneração Óptica. Material educativo. Proibida a reprodução sem autorização.</p>
+</footer>
+
+<script>
+  const form = document.getElementById('lead-form');
+  const btnSubmit = document.getElementById('btn-submit');
+  const formWrap = document.getElementById('form-wrap');
+  const successWrap = document.getElementById('success-wrap');
+  const btnDownload = document.getElementById('btn-download');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const cidade = document.getElementById('cidade').value.trim();
+    const optica = document.getElementById('optica').value.trim();
+
+    if (!nome || !email) {
+      alert('Por favor, preencha nome e e-mail.');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Digite um e-mail válido.');
+      return;
+    }
+
+    btnSubmit.disabled = true;
+    btnSubmit.innerHTML = '<span class="spinner"></span>Enviando...';
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email, telefone, cidade, optica })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        formWrap.style.display = 'none';
+        successWrap.classList.add('visivel');
+      } else {
+        throw new Error(data.message || 'Erro ao cadastrar.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Ocorreu um erro. Por favor, tente novamente.');
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = 'Quero meu e-book gratuito';
+    }
+  });
+</script>
+
+</body>
+</html>
