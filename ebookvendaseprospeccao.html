@@ -7,7 +7,6 @@
   <meta name="description" content="Guia prático para vender com valor e gerar recomendações. Baixe gratuitamente." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -67,9 +66,30 @@
     .hero-text .subtitulo {
       font-size: 16px;
       color: var(--texto-suave);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       line-height: 1.65;
     }
+
+    .iframe-wrap {
+      background: var(--fundo);
+      border: 1.5px solid var(--borda);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .iframe-titulo {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--azul);
+      text-align: center;
+      padding: 18px 24px 0;
+    }
+    .iframe-wrap iframe {
+      width: 100%;
+      height: 480px;
+      border: none;
+      display: block;
+    }
+
     .hero-capa { display: flex; justify-content: center; }
     .hero-capa img {
       width: 100%;
@@ -81,68 +101,6 @@
       display: block;
     }
     .hero-capa img:hover { transform: rotate(0deg) scale(1.02); }
-
-    /* Override Brevo */
-    .sib-form { background: transparent !important; padding: 0 !important; text-align: left !important; }
-    #sib-form-container { display: flex; justify-content: flex-start; }
-    #sib-container {
-      max-width: 100% !important;
-      width: 100% !important;
-      background: var(--fundo) !important;
-      border: 1.5px solid var(--borda) !important;
-      border-radius: 16px !important;
-      padding: 24px !important;
-      text-align: left !important;
-    }
-    .form-titulo {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--azul);
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .entry__label {
-      font-family: 'Inter', sans-serif !important;
-      font-size: 13px !important;
-      font-weight: 600 !important;
-      color: var(--texto) !important;
-      text-transform: capitalize !important;
-    }
-    .input {
-      font-family: 'Inter', sans-serif !important;
-      border: 1.5px solid var(--borda) !important;
-      border-radius: 10px !important;
-      padding: 12px 14px !important;
-      font-size: 14px !important;
-      background: var(--branco) !important;
-      color: var(--texto) !important;
-      width: 100% !important;
-    }
-    .input:focus {
-      border-color: var(--azul) !important;
-      outline: none !important;
-      box-shadow: 0 0 0 3px rgba(32,67,149,.1) !important;
-    }
-    .sib-form-block__button {
-      font-family: 'Inter', sans-serif !important;
-      background-color: var(--laranja) !important;
-      border-radius: 10px !important;
-      padding: 15px !important;
-      width: 100% !important;
-      font-size: 15px !important;
-      font-weight: 700 !important;
-      text-align: center !important;
-      cursor: pointer !important;
-      border: none !important;
-      transition: background .2s !important;
-    }
-    .sib-form-block__button:hover { background-color: #d46814 !important; }
-    .entry__specification { display: none !important; }
-    .input--hidden { display: none !important; visibility: hidden !important; position: absolute !important; left: -9999px !important; }
-    .sib-sms-input-wrapper { display: flex; gap: 8px; }
-    .sib-sms-input-wrapper .entry__field:first-child { width: 110px !important; flex-shrink: 0; }
-    .sib-sms-tooltip { display: none !important; }
 
     .beneficios { padding: 72px 24px; background: var(--fundo); }
     .secao-topo { text-align: center; margin-bottom: 48px; }
@@ -171,14 +129,7 @@
       transition: box-shadow .2s, transform .2s;
     }
     .card:hover { box-shadow: 0 8px 30px rgba(32,67,149,.1); transform: translateY(-2px); }
-    .card-icone {
-      width: 46px; height: 46px;
-      background: #eef1f9;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-      margin-bottom: 14px;
-    }
+    .card-icone { width: 46px; height: 46px; background: #eef1f9; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 14px; }
     .card h3 { font-size: 14px; font-weight: 700; color: var(--azul); margin-bottom: 8px; }
     .card p { font-size: 13px; color: var(--texto-suave); line-height: 1.6; }
 
@@ -215,6 +166,7 @@
       .hero-inner { grid-template-columns: 1fr; gap: 44px; text-align: center; }
       .hero-capa { order: -1; }
       .hero-capa img { max-width: 200px; transform: none; }
+      .iframe-wrap iframe { height: 560px; }
     }
   </style>
 </head>
@@ -231,110 +183,14 @@
       <h1>Vendas e Prospecção<br><em>para Óticas</em></h1>
       <p class="subtitulo">Guia prático para vender com valor e gerar recomendações consistentes na sua ótica.</p>
 
-      <div class="sib-form">
-        <div id="sib-form-container" class="sib-form-container">
-          <div id="sib-container" class="sib-container--large sib-container--vertical">
-            <form id="sib-form" method="POST" action="https://2c963706.sibforms.com/serve/MUIFAF5Mk5CRB-PDY3nT1rN7BuqYycUgXOF2f9MCGY-Ioq_4Oz919D7eA5fOYAz3qDLqtc2bNiZv_4nJ_ISbXdMWxOUrd-qo-tUShCwy2ydymYrQVgPs7IQRMVEvxjFcj9MK5hkKl7_GJSO0rJArdXgKZtVNS17WUHWvoSZc7Y0fhvdrNPR8ittL_MmopT1BGGg5TXHb_VjM2qDYPw==">
-
-              <p class="form-titulo">Preencha para receber seu e-book gratuito</p>
-
-              <div style="padding:6px 0;">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="NOME" data-required="*">Nome completo</label>
-                      <div class="entry__field">
-                        <input class="input" maxlength="200" type="text" id="NOME" name="NOME" autocomplete="off" placeholder="Seu nome completo" data-required="true" required />
-                      </div>
-                    </div>
-                    <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:13px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:6px;"></label>
-                  </div>
-                </div>
-              </div>
-
-              <div style="padding:6px 0;">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="EMAIL" data-required="*">E-mail</label>
-                      <div class="entry__field">
-                        <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Seu melhor e-mail" data-required="true" required />
-                      </div>
-                    </div>
-                    <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:13px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:6px;"></label>
-                  </div>
-                </div>
-              </div>
-
-              <div style="padding:6px 0;">
-                <div class="sib-sms-field sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="SMS" data-required="*">WhatsApp</label>
-                      <div class="sib-sms-input-wrapper" style="direction:ltr">
-                        <div class="sib-sms-input" data-placeholder="SMS" data-required="true" data-country-code="BR" data-value="" data-attributename="SMS">
-                          <div class="entry__field">
-                            <select class="input" name="SMS__COUNTRY_CODE" data-required="true" style="width:110px;">
-                              <option value="+55" selected>+55 BR</option>
-                            </select>
-                          </div>
-                          <div class="entry__field" style="width:100%">
-                            <input type="tel" class="input" id="SMS" name="SMS" autocomplete="off" placeholder="(00) 00000-0000" data-required="true" required />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:13px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:6px;"></label>
-                    <label class="entry__error entry__error--secondary" style="font-family:'Inter',sans-serif;font-size:13px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:6px;"></label>
-                  </div>
-                </div>
-              </div>
-
-              <div style="padding:6px 0;">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="OPTICA" data-required="*">Nome da ótica</label>
-                      <div class="entry__field">
-                        <input class="input" maxlength="200" type="text" id="OPTICA" name="OPTICA" autocomplete="off" placeholder="Nome da sua ótica" data-required="true" required />
-                      </div>
-                    </div>
-                    <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:13px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:6px;"></label>
-                  </div>
-                </div>
-              </div>
-
-              <div style="padding:6px 0;">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="CIDADE" data-required="*">Cidade</label>
-                      <div class="entry__field">
-                        <input class="input" maxlength="200" type="text" id="CIDADE" name="CIDADE" autocomplete="off" placeholder="Sua cidade" data-required="true" required />
-                      </div>
-                    </div>
-                    <label class="entry__error entry__error--primary" style="font-family:'Inter',sans-serif;font-size:13px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:6px;"></label>
-                  </div>
-                </div>
-              </div>
-
-              <div style="padding:8px 0 4px;">
-                <div class="sib-form-block">
-                  <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
-                    <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
-                      <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
-                    </svg>
-                    Quero meu e-book gratuito
-                  </button>
-                </div>
-              </div>
-
-              <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none!important;visibility:hidden!important;position:absolute!important;left:-9999px!important;">
-              <input type="hidden" name="locale" value="pt">
-              <input type="hidden" name="html_type" value="simple">
-            </form>
-          </div>
-        </div>
+      <div class="iframe-wrap">
+        <p class="iframe-titulo">Preencha para receber seu e-book gratuito</p>
+        <iframe
+          src="https://2c963706.sibforms.com/v2/serve/MUIFAF5Mk5CRB-PDY3nT1rN7BuqYycUgXOF2f9MCGY-Ioq_4Oz919D7eA5fOYAz3qDLqtc2bNiZv_4nJ_ISbXdMWxOUrd-qo-tUShCwy2ydymYrQVgPs7IQRMVEvxjFcj9MK5hkKl7_GJSO0rJArdXgKZtVNS17WUHWvoSZc7Y0fhvdrNPR8ittL_MmopT1BGGg5TXHb_VjM2qDYPw=="
+          frameborder="0"
+          scrolling="auto"
+          allowfullscreen>
+        </iframe>
       </div>
       <p style="font-size:11px;color:#aaa;text-align:center;margin-top:10px;">Seus dados estão seguros. Nada de spam.</p>
     </div>
@@ -374,7 +230,7 @@
 <section class="cta-final">
   <h2>Pronto para vender com estratégia?</h2>
   <p>Baixe agora, gratuitamente, e comece a transformar sua ótica.</p>
-  <button class="btn-cta-final" onclick="window.scrollTo({top:0,behavior:'smooth'});document.getElementById('NOME').focus()">
+  <button class="btn-cta-final" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     Quero meu e-book gratuito
   </button>
 </section>
@@ -383,17 +239,6 @@
   <p><a href="https://www.regeneracaooptica.com.br">regeneracaooptica.com.br</a></p>
   <p>© 2026 Regeneração Óptica. Material educativo. Proibida a reprodução sem autorização.</p>
 </footer>
-
-<script>
-  window.REQUIRED_CODE_ERROR_MESSAGE = 'Por favor, escolha um código de país';
-  window.LOCALE = 'pt';
-  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Informação inválida. Verifique o campo e tente novamente.";
-  window.REQUIRED_ERROR_MESSAGE = "Este campo é obrigatório.";
-  window.GENERIC_INVALID_MESSAGE = "Informação inválida. Verifique o campo e tente novamente.";
-  window.translation = { common: { selectedList: '${number} lista selecionada', selectedLists: '${number} listas selecionadas' } };
-  var AUTOHIDE = Boolean(0);
-</script>
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
 </body>
 </html>
