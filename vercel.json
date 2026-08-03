@@ -1,8 +1,3 @@
 {
-  "rewrites": [
-    {
-      "source": "/sorteio",
-      "destination": "https://sorteio-cinco-gules.vercel.app"
-    }
-  ]
+  "cleanUrls": true
 }
