@@ -558,17 +558,47 @@
     width:100%;
   }
   .brevo-embed .sib-sms-input{
-    display:block;
+    display:flex;
+    align-items:stretch;
     position:static;
+    gap:8px;
     width:100%;
+    min-width:0;
   }
   .brevo-embed .sib-sms-input .entry__field{
-    width:100%;
+    width:auto;
+    flex:1 1 auto;
+    min-width:0;
   }
   .brevo-embed .sib-sms-input .entry__field input.input{
     width:100%;
   }
+  .brevo-embed .sib-sms-input .entry__field.sib-sms-code-field{
+    width:76px;
+    flex:none;
+  }
+  .brevo-embed select.input{
+    display:block;
+    width:100%;
+    height:100%;
+    padding:14px 4px;
+    margin:0;
+    text-align:center;
+    border-radius:12px;
+    border:1.5px solid var(--line);
+    background:var(--paper-soft);
+    font-family:'Poppins',sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    box-sizing:border-box;
+    -webkit-appearance:none;
+    appearance:none;
+  }
   .brevo-embed .sib-sms-tooltip{ display:none; }
+
+  @media (min-width:640px){
+    .brevo-embed .sib-sms-input .entry__field.sib-sms-code-field{ width:88px; }
+  }
 
   .brevo-embed .entry__error{
     display:block;
@@ -1000,7 +1030,11 @@
                         <label class="entry__label" for="SMS" data-required="*">Telefone</label>
                         <div class="sib-sms-input-wrapper" style="direction:ltr">
                           <div class="sib-sms-input" data-placeholder="SMS" data-required="true" data-country-code="BR" data-value="" data-attributename="SMS">
-                            <input type="hidden" name="SMS__COUNTRY_CODE" value="+55">
+                            <div class="entry__field sib-sms-code-field">
+                              <select class="input" name="SMS__COUNTRY_CODE" data-required="true">
+                                <option value="+55" selected>+55</option>
+                              </select>
+                            </div>
                             <div class="entry__field" style="width:100%">
                               <input type="tel" class="input" id="SMS" name="SMS" autocomplete="off" placeholder="(00) 00000-0000" data-required="true" required />
                             </div>
