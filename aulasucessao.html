@@ -1173,6 +1173,18 @@
   })();
 </script>
 
+<!-- Limpa o campo de telefone (só dígitos) antes de enviar, como o Brevo exige -->
+<script>
+  (function(){
+    var form = document.getElementById('sib-form');
+    var tel = document.getElementById('SMS');
+    if(!form || !tel) return;
+    form.addEventListener('submit', function(){
+      tel.value = (tel.value || '').replace(/\D/g, '');
+    });
+  })();
+</script>
+
 <!-- Script funcional do formulário do Brevo (validação, envio via AJAX, mensagens) -->
 <script>
   window.REQUIRED_CODE_ERROR_MESSAGE = 'Escolha um código de país';
