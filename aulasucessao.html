@@ -551,62 +551,35 @@
   }
   .brevo-embed input.input--hidden{ display:none; }
 
-  /* Phone / WhatsApp field — the Brevo script wipes our markup and rebuilds
-     its own widget with these exact class names (found by reading main.js) */
+  /* Phone / contact field — deliberately renamed away from Brevo's
+     "sib-sms-input" class so their script never touches it. We style the
+     plain <select> + <input type=tel> ourselves, so it always looks right
+     regardless of whether their widget script succeeds or fails to load. */
   .brevo-embed .sib-sms-input-wrapper{
     display:block;
-    position:relative;
     width:100%;
   }
-  .brevo-embed .sib-sms-input,
-  .brevo-embed .sib-sms-select{
+  .brevo-embed .sib-phone-static{
     display:flex;
     align-items:stretch;
     gap:8px;
     width:100%;
     min-width:0;
   }
-  .brevo-embed .sib-sms-select__title{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
+  .brevo-embed .sib-phone-code{
+    width:76px;
     flex:none;
-    width:52px;
-    padding:0 8px;
-    border-radius:12px;
-    border:1.5px solid var(--line);
-    background:var(--paper-soft);
-    font-family:'Poppins',sans-serif;
-    font-size:13px;
-    color:var(--ink);
-    cursor:default;
-    overflow:hidden;
-    pointer-events:none;
-    -webkit-user-select:none;
-    user-select:none;
   }
-  .brevo-embed .sib-sms-select__title .sib-flag{ display:none; }
-  .brevo-embed .sib-sms-select__title .sib-sms-select__label-text{
-    display:none;
-  }
-  .brevo-embed .sib-sms-select__title::after{
-    content:'BR';
-    font-size:12px;
-    font-weight:600;
-    white-space:nowrap;
-  }
-  .brevo-embed .sib-sms-select__number-input{
-    display:flex;
-    align-items:stretch;
-    gap:8px;
+  .brevo-embed .sib-phone-number{
     flex:1 1 auto;
     min-width:0;
   }
-  .brevo-embed .sib-sms-select__calling-code{
-    width:52px;
-    flex:none;
+  .brevo-embed .sib-phone-code select.input{
+    display:block;
+    width:100%;
+    height:100%;
     padding:14px 4px;
+    margin:0;
     text-align:center;
     border-radius:12px;
     border:1.5px solid var(--line);
@@ -615,12 +588,16 @@
     font-size:14px;
     color:var(--ink);
     box-sizing:border-box;
+    -webkit-appearance:none;
+    appearance:none;
+    cursor:default;
+    pointer-events:none;
   }
-  .brevo-embed .sib-sms-select__phone-number{
-    flex:1 1 auto;
-    min-width:0;
+  .brevo-embed .sib-phone-number input.input{
+    display:block;
     width:100%;
     padding:14px 16px;
+    margin:0;
     border-radius:12px;
     border:1.5px solid var(--line);
     background:var(--paper-soft);
@@ -628,14 +605,13 @@
     font-size:15px;
     color:var(--ink);
     box-sizing:border-box;
+    transition:border-color .2s ease, background .2s ease;
   }
-  .brevo-embed .sib-sms-select__phone-number:focus,
-  .brevo-embed .sib-sms-select__calling-code:focus{
+  .brevo-embed .sib-phone-number input.input:focus{
     outline:none;
     border-color:var(--blue);
     background:#fff;
   }
-  .brevo-embed .sib-sms-select__number-input__overlay{ display:none; }
   .brevo-embed .sib-sms-tooltip{ display:none; }
   .brevo-embed .entry__specification{
     display:block;
@@ -644,40 +620,6 @@
     font-size:12px;
     color:var(--ink-soft);
   }
-
-  /* The country dropdown list gets appended to <body>, outside our page
-     wrapper, so these rules are intentionally NOT scoped to .brevo-embed */
-  .sib-sms-select__list{
-    display:none !important;
-    position:absolute;
-    list-style:none;
-    margin:0;
-    padding:6px;
-    background:#fff;
-    border:1px solid rgba(23,68,150,0.14);
-    border-radius:12px;
-    box-shadow:0 16px 34px -14px rgba(15,45,102,0.35);
-    max-height:260px;
-    overflow-y:auto;
-    z-index:9999;
-  }
-  .sib-sms-select__list.sib-is-open{ display:block; }
-  .sib-sms-select__list li{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:9px 10px;
-    border-radius:8px;
-    cursor:pointer;
-    font-family:'Poppins',sans-serif;
-    font-size:13.5px;
-    color:#122148;
-  }
-  .sib-sms-select__list li:hover,
-  .sib-sms-select__list li.sib-is-selected{
-    background:#EDF1FA;
-  }
-  .sib-sms-select__list .sib-flag{ display:none; }
 
   .brevo-embed .entry__error{
     display:block;
@@ -1106,27 +1048,23 @@
                   <div class="sib-sms-field sib-form-block">
                     <div class="form__entry entry_block">
                       <div class="form__label-row">
-                        <label class="entry__label" for="WHATSAPP" data-required="*">Telefone</label>
+                        <label class="entry__label" for="SMS" data-required="*">Contato</label>
                         <div class="sib-sms-input-wrapper" style="direction:ltr">
-                          <div class="sib-sms-input" data-placeholder="WHATSAPP" data-required="true" data-country-code="BR" data-value="" data-attributename="WHATSAPP">
-                            <div class="entry__field">
-                              <select class="input" name="WHATSAPP__COUNTRY_CODE" data-required="true">
+                          <div class="sib-phone-static" data-placeholder="SMS" data-country-code="BR" data-attributename="SMS">
+                            <div class="entry__field sib-phone-code">
+                              <select class="input" name="SMS__COUNTRY_CODE" data-required="true">
                                 <option value="+55" selected>+55</option>
                               </select>
                             </div>
-                            <div class="entry__field" style="width:100%">
-                              <input type="tel" class="input" id="WHATSAPP" name="WHATSAPP" autocomplete="off" placeholder="(00) 00000-0000" data-required="true" required />
+                            <div class="entry__field sib-phone-number">
+                              <input type="tel" class="input" id="SMS" name="SMS" autocomplete="off" placeholder="(00) 00000-0000" data-required="true" required />
                             </div>
-                          </div>
-                          <div class="sib-sms-tooltip">
-                            <div class="sib-sms-tooltip__box">O campo WHATSAPP deve conter entre 6 e 19 dígitos e incluir o código do país sem usar +/0 (por exemplo: 55xxxxxxxxxxx para o Brasil)</div>
-                            <span class="sib-sms-tooltip__icon">?</span>
                           </div>
                         </div>
                       </div>
                       <label class="entry__error entry__error--primary"></label>
                       <label class="entry__error entry__error--secondary"></label>
-                      <label class="entry__specification">Informe seu número de WhatsApp com DDD. Exemplo: 51999998888</label>
+                      <label class="entry__specification">Informe seu telefone com DDD. Exemplo: 51999998888</label>
                     </div>
                   </div>
 
@@ -1151,6 +1089,7 @@
 
                   <input type="text" name="email_address_check" value="" class="input input--hidden">
                   <input type="hidden" name="locale" value="pt">
+                  <input type="hidden" name="SOBRENOME" id="SOBRENOME_AUTO" value=".">
                 </form>
               </div>
             </div>
@@ -1218,6 +1157,20 @@
     });
   }, {threshold:0.12});
   els.forEach(el=>io.observe(el));
+</script>
+
+<!-- Preenche automaticamente o SOBRENOME (exigido pelo Brevo) a partir do Nome completo -->
+<script>
+  (function(){
+    var form = document.getElementById('sib-form');
+    var nomeInput = document.getElementById('NOME');
+    var sobrenomeHidden = document.getElementById('SOBRENOME_AUTO');
+    if(!form || !nomeInput || !sobrenomeHidden) return;
+    form.addEventListener('submit', function(){
+      var partes = (nomeInput.value || '').trim().split(/\s+/).filter(Boolean);
+      sobrenomeHidden.value = partes.length > 1 ? partes.slice(1).join(' ') : '.';
+    });
+  })();
 </script>
 
 <!-- Script funcional do formulário do Brevo (validação, envio via AJAX, mensagens) -->
